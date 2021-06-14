@@ -1,0 +1,95 @@
+name: gcc
+base: core20
+version: '11.1.0'
+summary: GCC, the GNU Compiler Collection
+description: |
+  The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, Go, and D, 
+  as well as libraries for these languages (libstdc++,...). GCC was originally written as the compiler for the GNU operating system. 
+  The GNU system was developed to be 100% free software, free in the sense that it respects the user's freedom.
+license: GPL-3.0+
+# icon: snap/gui/gcc.png
+grade: stable
+confinement: strict
+# architectures:
+#   - build-on: amd64
+parts:
+  gcc:
+    source: git://gcc.gnu.org/git/gcc.git
+    source-tag: releases/gcc-$SNAPCRAFT_PROJECT_VERSION
+    plugin: autotools
+    autotools-configure-parameters:
+      # - --disable-multilib
+      - --prefix=/usr
+    override-build: |
+      $SNAPCRAFT_PART_BUILD/contrib/download_prerequisites
+      snapcraftctl build
+    build-packages:
+      - git
+      - curl
+      - flex
+      - gcc-multilib
+
+# environment:
+#   HOME: "$SNAP_USER_COMMON"
+
+apps:
+  gcc:
+    command: usr/bin/gcc
+    plugs:
+    - home
+    - removable-media
+  # g++:
+  #   command: usr/bin/g++
+  #   plugs:
+  #   - home
+  #   - removable-media
+  cpp:
+    command: usr/bin/cpp
+    plugs:
+    - home
+    - removable-media
+  # c++:
+  #   command: usr/bin/c++
+  #   plugs:
+  #   - home
+  #   - removable-media
+  gcc-ar:
+    command: usr/bin/gcc-ar
+    plugs:
+    - home
+    - removable-media
+  gcc-nm:
+    command: usr/bin/gcc-nm
+    plugs:
+    - home
+    - removable-media
+  gcc-ranlib:
+    command: usr/bin/gcc-ranlib
+    plugs:
+    - home
+    - removable-media
+  gcov:
+    command: usr/bin/gcov
+    plugs:
+    - home
+    - removable-media
+  gcov-dump:
+    command: usr/bin/gcov-dump
+    plugs:
+    - home
+    - removable-media
+  gcov-tool:
+    command: usr/bin/gcov-tool
+    plugs:
+    - home
+    - removable-media
+  gfortran:
+    command: usr/bin/gfortran
+    plugs:
+    - home
+    - removable-media
+  lto-dump:
+    command: usr/bin/lto-dump
+    plugs:
+    - home
+    - removable-media
