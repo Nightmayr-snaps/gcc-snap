@@ -41,7 +41,7 @@ distributions.</p>
 
 Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) 
 are working to land snap install documentation and
-the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml)
+the [snapcraft.yaml](https://github.com/Nightmayr-snaps/gcc-snap/blob/main/snap/snapcraft.yaml)
 upstream so GCC can authoritatively publish future releases.
 
   - [x] Click the green "Use this template" button above to create a new repository based on this template
